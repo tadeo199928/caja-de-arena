@@ -1,10 +1,10 @@
-.drag-container {
+@import "tailwindcss";
 
-  width: 100vw;  
-  height: 100vh; 
-
-  position: relative; 
-  
-  border: 3px dashed blue;
-  box-sizing: border-box; 
+@theme {
+  --color-white: #fff;
+  --color-purple: #3f3cbb;
+  --color-midnight: #121063;
+  --color-tahiti: #3ab7bf;
+  --color-bermuda: #78dcca;
+  --color-sand: #D6B588;
 }
