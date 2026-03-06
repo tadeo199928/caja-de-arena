@@ -10,6 +10,7 @@ function App() {
         {/* <MyDraggableComponent key={god.id} img={god.img} /> */}
       {/* ))} */}
       <MyDraggableComponent  key="image1" img="/images/image1.jpg" />
+      <MyDraggableComponent  key="image2" img="/images/image2.jpg" />
     </div>
   );
 }
