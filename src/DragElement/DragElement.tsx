@@ -21,13 +21,28 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
     270: "rotate-270",
   };
 
-  const transformClasses = {
-    0: "noeffect",
-    1: "transform-left",
-    2: "transform-right",
-    3: "transform-up",
-    4: "transform-down",
-  };
+const getTransformStyle = () => {
+  let transformStr = `rotate(${rotation}deg)`;
+  
+  switch(transform) {
+    case 1: 
+      transformStr += " perspective(1000px) rotateY(50deg)";
+      break;
+    case 2: 
+      transformStr += " perspective(1000px) rotateY(-50deg)";
+      break;
+    case 3: 
+      transformStr += " perspective(1000px) rotateX(-50deg)";
+      break;
+    case 4: 
+      transformStr += " perspective(1000px) rotateX(50deg)";
+      break;
+    default:
+      break;
+  }
+  
+  return { transform: transformStr };
+};
 
   const handleTransform = () => {
     setTransform((prevTransform) => (prevTransform + 1) % 5);
@@ -48,8 +63,8 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
         <div
           className={`image-container ${
             isOpen ? "border-blue" : "border-red"
-          } ${rotationClasses[rotation as keyof typeof rotationClasses]}
-          ${transformClasses[transform as keyof typeof transformClasses]}`}
+          }`}
+          style={getTransformStyle()}
         >
           <img
             src={img}
