@@ -5,11 +5,11 @@ import "./App.css";
 
 function App() {
   return (
-    <div className=" w-screen h-screen bg-sand">
+    <div className="full-screen">
       {/* {imgOfGods.map((god) => ( */}
         {/* <MyDraggableComponent key={god.id} img={god.img} /> */}
-        <MyDraggableComponent />
       {/* ))} */}
+      <MyDraggableComponent  key="image1" img="/images/image1.jpg" />
     </div>
   );
 }

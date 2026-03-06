@@ -1,35 +1,60 @@
 import { useRef, useState } from "react";
 import Draggable from "react-draggable";
+import "./DragElement.css";
 
-// interface MyDraggableComponentProps {
-//   img: string;
-// }
+interface MyDraggableComponentProps {
+  img: string;
+}
 
-function MyDraggableComponent() {
+function MyDraggableComponent({ img }: MyDraggableComponentProps) {
   const nodeRef = useRef<HTMLDivElement>(null);
-  // const [selected, setSelected] = useState(false);
 
-  const [isDragging, setIsDragging] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [rotation, setRotation] = useState(0);
+  const [isImgSet, setIsImgSet] = useState(true);
+
+  const rotationClasses = {
+    0: "rotate-0",
+    90: "rotate-90",
+    180: "rotate-180",
+    270: "rotate-270",
+  };
+
+  const handleRotate = () => {
+    setRotation((prevRotation) => (prevRotation + 90) % 360);
+  };
 
   return (
     <Draggable
       nodeRef={nodeRef}
       bounds="parent"
-      onStart={() => setIsDragging(true)}
-      onStop={() => setIsDragging(false)}
+      onStart={() => setIsOpen(true)}
+      cancel="button"
     >
-      <div
-        ref={nodeRef}
-        className={`relative border-4 ${isDragging ? 'border-blue-500' : 'border-red-500'} w-40 h-55 bg-white rounded-lg shadow-lg cursor-grab hover:shadow-xl transition-shadow`}
-      >
-        {/* <img
-          src={img}
-          alt="placeholder"
-          draggable="false"
-          className="w-full h-full object-cover"
-        /> */}
-        <div className="absolute inset-0 flex items-center justify-center text-xl font-bold text-gray-700">
-          Drag Me
+      <div ref={nodeRef} className="draggable-item">
+        <div
+          className={`image-container drag-handle ${
+            isOpen ? "border-blue" : "border-red"
+          } ${rotationClasses[rotation as keyof typeof rotationClasses]}`}
+        >
+          <img
+            src={img}
+            alt="placeholder"
+            draggable="false"
+            className={isImgSet ? "" : "hidden"}
+          />
+        </div>
+        <div className={`${isOpen ? "OpenMenu" : "hidden"} `}>
+          <button className="button" onClick={handleRotate}>
+            Rotar: {rotation}°
+          </button>
+          <button className="button" onClick={() => setIsImgSet(!isImgSet)}>
+            {isImgSet ? "Enterrar" : "Desenterrar"}
+          </button>
+          <button className="button">Eliminar</button>
+          <button className="button red" onClick={() => setIsOpen(false)}>
+            Close
+          </button>
         </div>
       </div>
     </Draggable>
