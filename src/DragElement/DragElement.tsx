@@ -12,6 +12,7 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [isImgSet, setIsImgSet] = useState(true);
+  const [transform, setTransform] = useState(0);
 
   const rotationClasses = {
     0: "rotate-0",
@@ -19,6 +20,18 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
     180: "rotate-180",
     270: "rotate-270",
   };
+
+  const transformClasses = {
+    0: "noeffect",
+    1: "transform-left",
+    2: "transform-right",
+    3: "transform-up",
+    4: "transform-down",
+  };
+
+  const handleTransform = () => {
+    setTransform((prevTransform) => (prevTransform + 1) % 5);
+  }
 
   const handleRotate = () => {
     setRotation((prevRotation) => (prevRotation + 90) % 360);
@@ -33,9 +46,10 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
     >
       <div ref={nodeRef} className="draggable-item">
         <div
-          className={`image-container drag-handle ${
+          className={`image-container ${
             isOpen ? "border-blue" : "border-red"
-          } ${rotationClasses[rotation as keyof typeof rotationClasses]}`}
+          } ${rotationClasses[rotation as keyof typeof rotationClasses]}
+          ${transformClasses[transform as keyof typeof transformClasses]}`}
         >
           <img
             src={img}
@@ -51,9 +65,12 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
           <button className="button" onClick={() => setIsImgSet(!isImgSet)}>
             {isImgSet ? "Enterrar" : "Desenterrar"}
           </button>
+          <button className="button" onClick={handleTransform}>
+            Mirar {transform === 0 ? "Recto" : transform === 1 ? "Izquierda" : transform === 2 ? "Derecha" : transform === 3 ? "Arriba" : "Abajo"}
+          </button>
           <button className="button">Eliminar</button>
           <button className="button red" onClick={() => setIsOpen(false)}>
-            Close
+            Cerrar
           </button>
         </div>
       </div>

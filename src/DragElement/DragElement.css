@@ -54,6 +54,7 @@
   cursor: grab;
   transition: box-shadow 0.2s ease;
   z-index: 10;
+  transform-style: preserve-3d;
 }
 
 .image-container:hover {
@@ -88,6 +89,38 @@
 
 .rotate-270 {
   transform: rotate(270deg);
+}
+
+.transform-left {
+   transform: perspective(1000px)  rotateY(50deg);
+}
+
+.transform-right {
+   transform: perspective(1000px) rotateY(-50deg);
+}
+
+.transform-up {
+  transform: perspective(1000px) rotateX(-50deg);
+}
+
+.transform-down {
+  transform: perspective(1000px) rotateX(50deg);
+}
+
+.rotate-0.transform-left {
+   transform:  rotate(0deg) perspective(1000px)  rotateY(50deg);
+}
+
+.transform-right {
+   transform: perspective(1000px) rotateY(-50deg);
+}
+
+.transform-up {
+  transform: perspective(1000px) rotateX(-50deg);
+}
+
+.transform-down {
+  transform: perspective(1000px) rotateX(50deg);
 }
 
 @media (max-width: 900px) {
