@@ -14,12 +14,6 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
   const [isImgSet, setIsImgSet] = useState(true);
   const [transform, setTransform] = useState(0);
 
-  const rotationClasses = {
-    0: "rotate-0",
-    90: "rotate-90",
-    180: "rotate-180",
-    270: "rotate-270",
-  };
 
 const getTransformStyle = () => {
   let transformStr = `rotate(${rotation}deg)`;
