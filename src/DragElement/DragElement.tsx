@@ -11,8 +11,9 @@ function MyDraggableComponent({ img }: MyDraggableComponentProps) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [rotation, setRotation] = useState(0);
-  const [isImgSet, setIsImgSet] = useState(true);
+  const [isImgSet, setIsImgSet] = useState(0);
   const [transform, setTransform] = useState(0);
+  const [setOpacity, setSetOpacity] = useState(false);
 
 
 const getTransformStyle = () => {
@@ -33,6 +34,13 @@ const getTransformStyle = () => {
       break;
     default:
       break;
+  }
+
+  const isImgSet = {
+    0:"none",
+    1:"hidden",
+    2: "half-hidden-buttom",
+    3: "half-hidden-top"
   }
   
   return { transform: transformStr };
@@ -64,20 +72,20 @@ const getTransformStyle = () => {
             src={img}
             alt="placeholder"
             draggable="false"
-            className={isImgSet ? "" : "hidden"}
+            className={`${isImgSet === 0 ? "" : isImgSet === 1 ? "hidden" : isImgSet === 2 ? "half-hidden-buttom" : "half-hidden-top"} ${setOpacity ? "opacity" : ""}`}
           />
         </div>
         <div className={`${isOpen ? "OpenMenu" : "hidden"} `}>
           <button className="button" onClick={handleRotate}>
             Rotar: {rotation}°
           </button>
-          <button className="button" onClick={() => setIsImgSet(!isImgSet)}>
-            {isImgSet ? "Enterrar" : "Desenterrar"}
+          <button className="button" onClick={() => setIsImgSet((prev) => (prev + 1) % 4)}>
+            {isImgSet === 0 ? "Superficie" : isImgSet === 1 ? "Enterrado" : isImgSet === 2 ? "Mitad Inferior Enterrada" : "Mitad Superior Enterrada"}
           </button>
           <button className="button" onClick={handleTransform}>
             Mirar {transform === 0 ? "Recto" : transform === 1 ? "Izquierda" : transform === 2 ? "Derecha" : transform === 3 ? "Arriba" : "Abajo"}
           </button>
-          <button className="button">Eliminar</button>
+          <button className="button" onClick={() => setSetOpacity((prev) => !prev)} >Espiritual: {setOpacity ? "Si" : "No"}</button>
           <button className="button red" onClick={() => setIsOpen(false)}>
             Cerrar
           </button>

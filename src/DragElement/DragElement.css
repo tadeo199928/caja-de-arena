@@ -17,6 +17,18 @@
   display: none;
 }
 
+.half-hidden-buttom {
+  clip-path: inset(50% 0 0 0);
+}
+
+.half-hidden-top {
+  clip-path: inset(0 0 50% 0);
+}
+
+.opacity{
+  opacity: 0.5;
+}
+
 .button {
   border-radius: 0.375rem;
   height: 4rem;
