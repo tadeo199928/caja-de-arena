@@ -35,13 +35,6 @@ const getTransformStyle = () => {
     default:
       break;
   }
-
-  const isImgSet = {
-    0:"none",
-    1:"hidden",
-    2: "half-hidden-buttom",
-    3: "half-hidden-top"
-  }
   
   return { transform: transformStr };
 };
@@ -53,6 +46,13 @@ const getTransformStyle = () => {
   const handleRotate = () => {
     setRotation((prevRotation) => (prevRotation + 90) % 360);
   };
+
+    const setBuried = {
+    0:"none",
+    1:"hidden",
+    2: "half-hidden-buttom",
+    3: "half-hidden-top"
+  }
 
   return (
     <Draggable
@@ -72,7 +72,7 @@ const getTransformStyle = () => {
             src={img}
             alt="placeholder"
             draggable="false"
-            className={`${isImgSet === 0 ? "" : isImgSet === 1 ? "hidden" : isImgSet === 2 ? "half-hidden-buttom" : "half-hidden-top"} ${setOpacity ? "opacity" : ""}`}
+            className={`${setBuried[isImgSet as keyof typeof setBuried]} ${setOpacity ? "opacity" : ""}`}
           />
         </div>
         <div className={`${isOpen ? "OpenMenu" : "hidden"} `}>
