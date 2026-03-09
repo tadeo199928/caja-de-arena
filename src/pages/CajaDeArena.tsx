@@ -1,5 +1,5 @@
 import MyDraggableComponent from "../components/DragElement/DragElement";
-import "./css/CajadeArena.css";
+import "./css/CajaDeArena.css";
 import { useSelector } from "react-redux";
 import type {ImgRender} from "../utils/ImgRender";
 
