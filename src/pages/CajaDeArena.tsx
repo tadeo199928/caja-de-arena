@@ -1,11 +1,16 @@
 import MyDraggableComponent from "../components/DragElement/DragElement";
 import "./css/cajadeArena.css";
+import { useSelector } from "react-redux";
+import type {ImgRender} from "../utils/ImgRender";
+
 
 function CajaDeArena() {
+  const selectedGods = useSelector((state: { gods: { selectedGods: ImgRender[] } }) => state.gods.selectedGods);
   return (
     <div className="main-caja">
-      <MyDraggableComponent key="image1" img="/images/image1.jpg" />
-      <MyDraggableComponent key="image2" img="/images/image2.jpg" />
+      {selectedGods.map((god: ImgRender) => (
+        <MyDraggableComponent key={god.id} id={god.id} img={god.img} />
+      ))}
     </div>
   );
 }

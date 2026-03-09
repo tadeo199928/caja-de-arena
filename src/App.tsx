@@ -14,8 +14,9 @@ function App() {
       <Navbar />
       <div className="page-container">
         <Routes>
-          <Route path="/cajadeArena" element={<CajaDeArena />} />
-          <Route path="/" element={<SeleccionDioses />} /> 
+          <Route path="/" element={<CajaDeArena />} />
+          <Route path="/CajaDeArena" element={<CajaDeArena />} />
+          <Route path="/SeleccionDioses" element={<SeleccionDioses />} /> 
         </Routes>
       </div>
       {/* {imgOfGods.map((god) => ( */}
