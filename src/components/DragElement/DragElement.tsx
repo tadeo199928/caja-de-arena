@@ -85,7 +85,7 @@ const getTransformStyle = () => {
           <button className="button" onClick={handleTransform}>
             Mirar {transform === 0 ? "Recto" : transform === 1 ? "Izquierda" : transform === 2 ? "Derecha" : transform === 3 ? "Arriba" : "Abajo"}
           </button>
-          <button className="button" onClick={() => setSetOpacity((prev) => !prev)} >Espiritual: {setOpacity ? "Si" : "No"}</button>
+          <button className="button" onClick={() => setSetOpacity((prev) => !prev)} >Espiritu: {setOpacity ? "Si" : "No"}</button>
           <button className="button red" onClick={() => setIsOpen(false)}>
             Cerrar
           </button>

@@ -1,17 +1,27 @@
 
- import MyDraggableComponent from "./DragElement/DragElement";
+
 // import { imgOfGods } from "./DragElement/ImgFinder";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import CajaDeArena from "./pages/CajaDeArena";
+import SeleccionDioses from "./pages/SeleccionDioses";
+
 
 function App() {
   return (
-    <div className="full-screen">
+    <BrowserRouter>
+      <Navbar />
+      <div className="page-container">
+        <Routes>
+          <Route path="/cajadeArena" element={<CajaDeArena />} />
+          <Route path="/" element={<SeleccionDioses />} /> 
+        </Routes>
+      </div>
       {/* {imgOfGods.map((god) => ( */}
         {/* <MyDraggableComponent key={god.id} img={god.img} /> */}
       {/* ))} */}
-      <MyDraggableComponent  key="image1" img="/images/image1.jpg" />
-      <MyDraggableComponent  key="image2" img="/images/image2.jpg" />
-    </div>
+    </BrowserRouter>
   );
 }
 

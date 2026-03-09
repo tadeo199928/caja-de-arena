@@ -1,0 +1,128 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: #78401f;
+  z-index: 100;
+  position: relative;
+}
+
+.Title {
+  flex: 1;
+  text-align: center;
+}
+
+.Title h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.1rem, 2.3vw, 1.8rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow:
+    0 1px 0 #2a190e,
+    0 2px 0 #2a190e,
+    0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.icon {
+  display: none;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+}
+
+.buttons a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.5rem 0.9rem;
+  border: 2px solid var(--brass-dark);
+  border-radius: 6px;
+  background: #19b674;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 3px 5px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.buttons a:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 6px 9px rgba(0, 0, 0, 0.35);
+}
+
+.buttons a:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.35);
+}
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #6f3c1f;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.mobile-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 860px) {
+  .navbar {
+    justify-content: center;
+    padding: 0.9rem;
+    display: flex;
+  }
+
+  .icon {
+    display: block;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
