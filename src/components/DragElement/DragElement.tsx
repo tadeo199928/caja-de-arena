@@ -95,7 +95,7 @@ function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
       nodeRef={nodeRef}
       bounds="parent"
       defaultPosition={position}
-      onStop={(e, data) => {
+      onStop={(_e, data) => {
         setPosition({ x: data.x, y: data.y });
       }}
       onStart={() => setIsOpen(true)}
