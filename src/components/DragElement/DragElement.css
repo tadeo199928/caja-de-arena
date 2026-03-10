@@ -4,6 +4,8 @@
   left: 45%;
   display: grid;
   grid-template-columns: 1fr auto;
+  max-height: 200px;
+  max-width: 100px;
 }
 
 .OpenMenu {
@@ -11,6 +13,8 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 2rem;
+  max-height: 200px;
+  max-width: 100px;
 }
 
 .hidden {
@@ -25,7 +29,7 @@
   clip-path: inset(0 0 50% 0);
 }
 
-.opacity{
+.opacity {
   opacity: 0.5;
 }
 
@@ -57,9 +61,12 @@
 }
 
 .image-container {
-  width: 15rem;
-  height: 25rem;
+  width: 100px;
+  height: 200px;
   border: 4px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: transparent;
   border-radius: 0.5rem 0.5rem 0 0;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -104,11 +111,11 @@
 }
 
 .transform-left {
-   transform: perspective(1000px)  rotateY(50deg);
+  transform: perspective(1000px) rotateY(50deg);
 }
 
 .transform-right {
-   transform: perspective(1000px) rotateY(-50deg);
+  transform: perspective(1000px) rotateY(-50deg);
 }
 
 .transform-up {
@@ -120,11 +127,11 @@
 }
 
 .rotate-0.transform-left {
-   transform:  rotate(0deg) perspective(1000px)  rotateY(50deg);
+  transform: rotate(0deg) perspective(1000px) rotateY(50deg);
 }
 
 .transform-right {
-   transform: perspective(1000px) rotateY(-50deg);
+  transform: perspective(1000px) rotateY(-50deg);
 }
 
 .transform-up {
@@ -138,7 +145,7 @@
 @media (max-width: 900px) {
   .image-container {
     width: 10rem;
-    height: 15rem;
+    height: auto;
   }
 
   .OpenMenu {
