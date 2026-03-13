@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/sessions", sessionRoutes);
 app.use("/patients", patientsRoutes);
-app.use("/sessionEvent", sessionEventsRoutes);
+app.use("/sessions", sessionEventsRoutes);
 
 app.listen(PORT, () => {
   console.log(` Servidor corriendo en puerto ${PORT}`);
