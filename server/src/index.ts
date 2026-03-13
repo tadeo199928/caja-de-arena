@@ -3,11 +3,17 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/auth.ts";
 import sessionRoutes from "./routes/sessions.ts";
 import patientsRoutes from "./routes/patients.ts";
-import sessionEventsRoutes from "./routes/session_events.ts"
+import sessionEventsRoutes from "./routes/session_events.ts";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 
 const PORT = process.env.PORT || 3000;
 
