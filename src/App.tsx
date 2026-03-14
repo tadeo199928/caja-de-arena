@@ -24,8 +24,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/CajaDeArena" element={<CajaDeArena />} />
-          <Route path="/SeleccionDioses" element={<SeleccionDioses />} />
+          <Route path="/CajaDeArena" element={ <CajaDeArena /> } />
+          <Route path="/SeleccionDioses" element={ <SeleccionDioses /> } />
           <Route path="/session/:token" element={<SessionPage />} />
         </Routes>
       </div>
