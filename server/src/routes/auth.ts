@@ -7,12 +7,12 @@ import { handleError } from "../utils/handleError.ts";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const result = await pool.query(
-      "INSERT INTO psychologists (email,password_hash) VALUES ($1 , $2) RETURNING id, email",
-      [email, hashedPassword],
+      "INSERT INTO psychologists (email,password_hash, name) VALUES ($1 , $2, $3) RETURNING id, email, name",
+      [email, hashedPassword, name],
     );
     res.json({ success: true, user: result.rows[0] });
   } catch (error) {
@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ id: psychologist.id }, process.env.JWT_SECRET!, {
       expiresIn: "8h",
     });
-    res.json({ success: true, token });
+    res.json({ success: true, token, name: psychologist.name });
   } catch (error) {
     handleError(error, res);
   }

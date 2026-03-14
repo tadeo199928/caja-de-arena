@@ -1,0 +1,56 @@
+.Form-Container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.Form-Container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.Patient-Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Patient-Form input[type="text"] {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.Patient-Form input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.Patient-Form button[type="submit"] {
+  padding: 0.875rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.Patient-Form button[type="submit"]:hover {
+  background-color: #357abd;
+  transform: translateY(-1px);
+}
+
+.Patient-Form button[type="submit"]:active {
+  transform: translateY(0);
+}

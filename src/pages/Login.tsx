@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/Login.css";
+import { API_URL } from "../utils/Api.ts";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const API_URL = import.meta.env.VITE_API_URL || 'https://caja-de-arena-production.up.railway.app';
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-      console.log('API URL:', API_URL); 
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: {
@@ -20,6 +19,7 @@ function LoginForm() {
     });
     const data = await response.json();
     if (data.success) {
+      localStorage.setItem('name', data.name)
       localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } else {

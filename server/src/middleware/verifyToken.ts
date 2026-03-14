@@ -15,6 +15,7 @@ export const verifySession = async (
   res: Response,
   next: NextFunction,
 ) => {
+   console.log('Authorization header:', req.headers.authorization)
   const { token } = req.params;
   const uuidRegex =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
