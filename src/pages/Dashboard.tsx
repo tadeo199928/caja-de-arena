@@ -10,14 +10,14 @@ function Dashboard() {
   useEffect(() => {
     const fetchPsychologists = async () => {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/patients`, {
+      const response = await fetch(`${API_URL}/auth/data`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       const data = await response.json();
       if (data.success) {
-        setName(data.psychologists);
+        setName(data.psychologist.name);
       } else {
         alert("Error fetching psychologists");
       }

@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import pool from "../db.ts";
 import { handleError } from "../utils/handleError.ts";
+import { verifyToken } from "../middleware/authToken.ts";
 
 const router = express.Router();
 
@@ -51,5 +52,18 @@ router.post("/login", async (req, res) => {
     handleError(error, res);
   }
 });
+
+
+router.get("/data", verifyToken, async (req, res) => {
+  try {
+    const result = await pool.query("SELECT id,name,email FROM psychologists WHERE id= $1",
+      [req.psychologist_id]
+    )
+     res.json({ success: true, psychologist: result.rows[0] });
+    
+  } catch (error) {
+        handleError(error, res);
+  }
+})
 
 export default router;
