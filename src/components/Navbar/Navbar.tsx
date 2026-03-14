@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { AiOutlineThunderbolt } from "react-icons/ai";
-import { useEffect, useState } from "react";
 
 function Navbar() {
   const location = useLocation();
