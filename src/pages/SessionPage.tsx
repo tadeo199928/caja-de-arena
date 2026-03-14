@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { API_URL } from "../utils/Api"
 import CajaDeArena from "./CajaDeArena"
+import { Navigate } from "react-router-dom"
 
 function SessionPage() {
   const { token } = useParams()
@@ -17,7 +18,7 @@ function SessionPage() {
   }, [token])
 
   if (valid === null) return <p>Cargando...</p>
-  if (!valid) return <p>Este enlace ha expirado o no es válido.</p>
+  if (!valid) return <Navigate to="/login" />
   return <CajaDeArena />
 }
 
