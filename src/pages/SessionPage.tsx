@@ -9,7 +9,7 @@ import { setGods } from "../utils/godsSlice";
 function SessionPage() {
   const { token } = useParams();
   const [valid, setValid] = useState<boolean | null>(null);
-          const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const validateToken = async () => {
@@ -18,27 +18,20 @@ function SessionPage() {
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("sessionToken", token!);
-        localStorage.setItem("patientId", data.session.patient_id);
         const patient_id = data.session.patient_id;
         localStorage.setItem("patientId", patient_id);
 
-        const hasLocalData = Object.keys(localStorage).some((key) =>
-          key.startsWith("god-"),
+        const snapshotResponse = await fetch(
+          `${API_URL}/session-events/${patient_id}/latest-snapshot`,
         );
+        const snapshotData = await snapshotResponse.json();
 
-        if (!hasLocalData) {
-          const snapshotResponse = await fetch(
-            `${API_URL}/session-events/${patient_id}/latest-snapshot`,
-          );
-          const snapshotData = await snapshotResponse.json();
-
-          if (snapshotData.success && snapshotData.snapshot) {
-            Object.entries(snapshotData.snapshot).forEach(([key, value]) => {
-              localStorage.setItem(key, JSON.stringify(value));
-            });
-            if (snapshotData.snapshot.selectedGods) {
-              dispatch(setGods(snapshotData.snapshot.selectedGods));
-            }
+        if (snapshotData.success && snapshotData.snapshot) {
+          Object.entries(snapshotData.snapshot).forEach(([key, value]) => {
+            localStorage.setItem(key, JSON.stringify(value));
+          });
+          if (snapshotData.snapshot.selectedGods) {
+            dispatch(setGods(snapshotData.snapshot.selectedGods));
           }
         }
       }
