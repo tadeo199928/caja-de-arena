@@ -7,6 +7,7 @@ import LoginForm from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import SessionPage from "./pages/SessionPage";
+import ProtectedSessionRoute from "./components/ProtectedRoute/ProtectedSessionRoute";
 
 function App() {
   return (
@@ -24,8 +25,22 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/CajaDeArena" element={ <CajaDeArena /> } />
-          <Route path="/SeleccionDioses" element={ <SeleccionDioses /> } />
+          <Route
+            path="/CajaDeArena"
+            element={
+              <ProtectedSessionRoute>
+                <CajaDeArena />
+              </ProtectedSessionRoute>
+            }
+          />
+          <Route
+            path="/SeleccionDioses"
+            element={
+              <ProtectedSessionRoute>
+                <SeleccionDioses />
+              </ProtectedSessionRoute>
+            }
+          />
           <Route path="/session/:token" element={<SessionPage />} />
         </Routes>
       </div>
