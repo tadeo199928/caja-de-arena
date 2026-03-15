@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import "./PatientList.css";
 import { API_URL } from "../../utils/Api.ts";
 
-type Patient = {
+interface Patient {
   id: string;
   name: string;
   comments: string;
-};
+}
 
-function PatientList() {
+interface PatientListProps {
+  refresh: number;
+}
+
+function PatientList({ refresh }: PatientListProps) {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [generatedLinks, setGeneratedLinks] = useState<Record<string, string>>(
     {},
@@ -31,7 +35,7 @@ function PatientList() {
       }
     };
     fetchPatients();
-  }, []);
+  }, [refresh]);
 
   const handleGenerateLink = async (patient_id: string) => {
     const response = await fetch(`${API_URL}/sessions/create`, {

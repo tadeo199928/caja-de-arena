@@ -2,7 +2,11 @@ import { useState } from "react";
 import "./PatientForm.css";
 import { API_URL } from "../../utils/Api.ts";
 
-function PatientForm() {
+interface PatientCreated {
+   onPatientCreated: () => void
+}
+
+function PatientForm({ onPatientCreated }: PatientCreated) {
   const [name, setName] = useState("");
   const [comments, setComments] = useState("");
 
@@ -20,6 +24,7 @@ function PatientForm() {
     const data = await createdPatient.json();
     if (data.success) {
       alert("Paciente creado con éxito");
+      onPatientCreated()
       setName("");
       setComments("");
     } else {

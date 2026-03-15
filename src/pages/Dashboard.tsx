@@ -6,6 +6,7 @@ import { API_URL } from "../utils/Api";
 
 function Dashboard() {
   const [name, setName] = useState("");
+  const [refresh, setRefresh] = useState(0)
 
   useEffect(() => {
     const fetchPsychologists = async () => {
@@ -29,8 +30,8 @@ function Dashboard() {
     <div className="dashboard-container">
       <h1>Bienvenido al Dashboard {name}</h1>
       <div className="list-wrapper">
-        <PatientForm />
-        <PatientList />
+        <PatientForm onPatientCreated={() => setRefresh(r => r + 1)}/>
+        <PatientList refresh={refresh} />
       </div>
     </div>
   );

@@ -5,9 +5,10 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 function Navbar() {
   const location = useLocation();
   const isLogin = location.pathname === "/" || location.pathname === "/login";
-  const isSession = location.pathname.startsWith("/session/") || 
-  location.pathname.toLowerCase() === "/cajadearena" ||
-  location.pathname.toLowerCase() === "/selecciondioses"
+  const isSession =
+    location.pathname.startsWith("/session/") ||
+    location.pathname.toLowerCase() === "/cajadearena" ||
+    location.pathname.toLowerCase() === "/selecciondioses";
 
   if (isLogin) return null;
   const handledMenu = () => {

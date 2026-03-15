@@ -10,7 +10,6 @@ interface MyDraggableComponentProps {
 function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
   const nodeRef = useRef<HTMLDivElement>(null);
 
-  // Read from localStorage inside useState initializer functions
   const [isOpen, setIsOpen] = useState(false);
 
   const [rotation, setRotation] = useState(() => {

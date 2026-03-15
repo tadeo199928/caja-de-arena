@@ -16,6 +16,7 @@ function SessionPage() {
       console.log(data);
       if (data.success) {
         localStorage.setItem("sessionToken", token!);
+        localStorage.setItem("patientId", data.session.patient_id);
         setValid(data.success);
       }
     };
