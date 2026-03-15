@@ -18,6 +18,9 @@ export const godsSlice = createSlice({
         (god) => god.id !== action.payload.id,
       );
     },
+    setGods: (state, action: PayloadAction<ImgRender[]>) => {
+      state.selectedGods = action.payload;
+    },
 
     clearGod: (state) => {
       state.selectedGods = [];
@@ -25,5 +28,5 @@ export const godsSlice = createSlice({
   },
 });
 
-export const { addGod, removeGod, clearGod } = godsSlice.actions;
+export const { addGod, removeGod, setGods, clearGod } = godsSlice.actions;
 export default godsSlice.reducer;

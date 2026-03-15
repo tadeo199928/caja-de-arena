@@ -20,6 +20,10 @@ function CajaDeArena() {
       }
     }
     const patient_id = localStorage.getItem("patientId");
+    const selectedGodsData = JSON.parse(
+      localStorage.getItem("selectedGods") || "[]",
+    );
+    snapshot["selectedGods"] = selectedGodsData;
     const response = await fetch(`${API_URL}/session-events/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

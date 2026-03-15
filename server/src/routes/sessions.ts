@@ -46,21 +46,39 @@ router.get("/:token", verifySession, async (req, res) => {
   }
 });
 
-
 router.patch("/:id/deactivate", verifyToken, async (req, res) => {
   try {
-    const { id } = req.params
+    const { id } = req.params;
     const result = await pool.query(
       "UPDATE sessions SET is_active = false WHERE id = $1 AND psychologist_id = $2 RETURNING *",
-      [id, req.psychologist_id]
-    )
+      [id, req.psychologist_id],
+    );
     if (result.rows.length === 0) {
-      return res.status(404).json({ success: false, error: "Sesión no encontrada" })
+      return res
+        .status(404)
+        .json({ success: false, error: "Sesión no encontrada" });
     }
-    res.json({ success: true, session: result.rows[0] })
+    res.json({ success: true, session: result.rows[0] });
   } catch (error) {
-    handleError(error, res)
+    handleError(error, res);
   }
-})
+});
+
+router.get("/active/:patient_id", verifyToken, async (req, res) => {
+  try {
+    const { patient_id } = req.params;
+    const existing = await pool.query(
+      "SELECT * FROM sessions WHERE patient_id = $1 AND is_active= true AND expires_at > NOW() ",
+      [patient_id],
+    );
+    res.json({
+      success: true,
+      hasActive: existing.rows.length > 0,
+      session: existing.rows[0] || null,
+    });
+  } catch (error) {
+    handleError(error, res);
+  }
+});
 
 export default router;

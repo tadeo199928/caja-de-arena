@@ -22,14 +22,37 @@ function PatientList({ refresh }: PatientListProps) {
   useEffect(() => {
     const fetchPatients = async () => {
       const token = localStorage.getItem("token");
+
       const response = await fetch(`${API_URL}/patients`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       const data = await response.json();
+
       if (data.success) {
         setPatients(data.patients);
+        const activeSessions = await Promise.all(
+          data.patients.map(async (patient: Patient) => {
+            const res = await fetch(
+              `${API_URL}/sessions/active/${patient.id}`,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+              },
+            );
+            return { patient_id: patient.id, data: await res.json() };
+          }),
+        );
+        activeSessions.forEach(({ patient_id, data }) => {
+          if (data.hasActive) {
+            const link = `${window.location.origin}/session/${data.session.token}`;
+            setGeneratedLinks((prev) => ({ ...prev, [patient_id]: link }));
+            setSessionIds((prev) => ({
+              ...prev,
+              [patient_id]: data.session.id,
+            }));
+          }
+        });
       } else {
         alert("Error fetching patients");
       }
