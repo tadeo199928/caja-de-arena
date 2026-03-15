@@ -8,7 +8,6 @@ function Navbar() {
   const isSession = location.pathname.startsWith("/session/") || 
   location.pathname.toLowerCase() === "/cajadearena" ||
   location.pathname.toLowerCase() === "/selecciondioses"
-  const isDashboard = location.pathname === "/dashboard";
 
   if (isLogin) return null;
   const handledMenu = () => {
@@ -21,11 +20,7 @@ function Navbar() {
       <div className="Title">
         <h1>Caja de Arena</h1>
       </div>
-      {isDashboard && (
-        <div className="buttons">
-          <Link to="/dashboard">Dashboard</Link>
-        </div>
-      )}
+
       {isSession && (
         <div className="buttons">
           <Link to="/CajaDeArena">Caja de Arena</Link>
