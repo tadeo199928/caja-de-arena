@@ -27,7 +27,7 @@ function SeleccionDioses() {
 
           return (
             <div key={god.id} className="god-item">
-              <img src={god.img} alt={`God ${god.id}`} />
+              <img src={god.img} alt={`God ${god.id}`} loading="lazy" />
               <div className="button-container">
                 <a
                   onClick={() => dispatch(addGod(god))}

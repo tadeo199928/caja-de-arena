@@ -118,7 +118,6 @@ function PatientList({ refresh }: PatientListProps) {
           <div key={patient.id} className="patient-card">
             <h2>{patient.name}</h2>
             <p>{patient.comments}</p>
-            <p>{patient.id}</p>
             {generatedLinks[patient.id] ? (
               <div className="updateLink">
                 <p>{generatedLinks[patient.id]}</p>

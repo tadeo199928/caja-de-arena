@@ -28,7 +28,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <h1>Bienvenido al Dashboard {name}</h1>
+      <h1 className="dashboard-title">Bienvenido al dashboard {name}</h1>
       <div className="list-wrapper">
         <PatientForm onPatientCreated={() => setRefresh(r => r + 1)}/>
         <PatientList refresh={refresh} />

@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="page-container">
+      <main className="app-main">
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="/login" element={<LoginForm />} />
@@ -43,7 +43,7 @@ function App() {
           />
           <Route path="/session/:token" element={<SessionPage />} />
         </Routes>
-      </div>
+      </main>
     </BrowserRouter>
   );
 }

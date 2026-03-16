@@ -3,12 +3,10 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
 }
 
 .Form-Container h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   color: #333;
   text-align: center;
@@ -53,4 +51,24 @@
 
 .Patient-Form button[type="submit"]:active {
   transform: translateY(0);
+}
+
+@media   (max-width: 768px) {
+  .Form-Container {
+    padding: 1rem;
+  }
+
+  .Form-Container h1 {
+    font-size: 1.5rem;
+  }
+
+  .Patient-Form input[type="text"] {
+    font-size: 0.9rem;
+  }
+
+  .Patient-Form button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+  
 }
