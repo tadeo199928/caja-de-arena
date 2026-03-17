@@ -32,4 +32,18 @@ router.get("/", verifyToken, async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", verifyToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const psychologist_id = req.psychologist_id;
+    const delete_patient = await pool.query(
+      "DELETE FROM patients WHERE id = $1 AND psychologist_id = $2 RETURNING *",
+      [id, psychologist_id]
+    );
+    res.json({ success: true, patient: delete_patient.rows[0] });
+  } catch (error) {
+    handleError(error, res);
+  }
+});
+
 export default router;

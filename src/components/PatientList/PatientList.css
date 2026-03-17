@@ -1,82 +1,122 @@
-.list-Container {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  max-height: 600px;
-  display: flex;
-  flex-direction: column;
-}
-
-.list-Container h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #333;
-  text-align: center;
-}
-
-.list-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
-
-.list-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.list-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.list-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-}
-
-.list-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 .patient-card {
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   padding: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.patient-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #4a90e2;
-}
 
 .patient-card h2 {
-  font-size: 1.125rem;
-  margin: 0 0 0.5rem 0;
-  color: #333;
-  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  font-size: 1.05rem;
+  color: #0f172a;
 }
 
 .patient-card p {
   margin: 0;
-  color: #666;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  padding-bottom: 1rem;
 }
 
-.list-content:empty::after {
-  content: "No hay pacientes registrados";
-  display: block;
-  text-align: center;
-  color: #999;
-  padding: 2rem;
-  font-style: italic;
+.link{
+  background-color: rgb(206, 207, 208);
+  border: 1px solid #2c2c2e;
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+.link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+}
+
+.copy-icon {
+  cursor: pointer;
+  color: #5e89e6;
+  width: 2rem;
+  height: 2rem;
+}
+
+.copy-icon:hover {
+  color: #3b66c1;
+  transform: scale(1.1);
+}
+
+.actions-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.button-list {
+  border: none;
+  border-radius: 9px;
+  padding: 0.62rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+
+.button-list:active {
+  transform: translateY(1px);
+}
+
+.button-primary {
+  background: #5e89e6;
+  color: #fff;
+}
+
+.button-primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.28);
+}
+
+.button-update {
+  background: #69c073;
+  color: #fff;
+}
+
+.button-update:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 6px 12px rgba(14, 165, 164, 0.28);
+}
+
+.button-danger {
+  background: #ef5b5b;
+  color: #fff;
+}
+
+.button-danger:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.28);
+}
+
+.updateLink {
+  margin-top: 0.65rem;
+  padding: 0.6rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.updateLink p {
+  margin: 0 0 0.55rem 0;
+  font-size: 0.84rem;
+  color: #334155;
+  word-break: break-all;
+}
+
+@media (max-width: 640px) {
+  .actions-row {
+    flex-direction: column;
+  }
+
+  .button-list {
+    width: 100%;
+  }
 }

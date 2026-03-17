@@ -3,6 +3,7 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 1100px;
 }
 
 .Form-Container h1 {
@@ -56,6 +57,7 @@
 @media   (max-width: 768px) {
   .Form-Container {
     padding: 1rem;
+    width: 300px;
   }
 
   .Form-Container h1 {

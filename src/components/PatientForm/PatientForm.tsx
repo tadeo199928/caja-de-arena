@@ -45,12 +45,12 @@ function PatientForm({ onPatientCreated }: PatientCreated) {
         />
         <input
           type="text"
-          placeholder="Comentarios"
+          placeholder="Relatorio"
           required
           value={comments}
           onChange={(e) => setComments(e.target.value)}
         />
-        <button type="submit">Generar sesión</button>
+        <button type="submit">Crear paciente</button>
       </form>
     </div>
   );
