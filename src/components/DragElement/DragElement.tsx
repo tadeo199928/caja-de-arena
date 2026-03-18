@@ -1,6 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import "./DragElement.css";
+import { useDispatch } from "react-redux";
+import { removeGod } from "../../utils/godsSlice";
+
 
 interface MyDraggableComponentProps {
   img: string;
@@ -9,6 +12,7 @@ interface MyDraggableComponentProps {
 
 function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
   const nodeRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,10 +31,6 @@ function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
     return saved ? (JSON.parse(saved).transform ?? 0) : 0;
   });
 
-  const [setOpacity, setSetOpacity] = useState(() => {
-    const saved = localStorage.getItem(`god-${id}`);
-    return saved ? (JSON.parse(saved).setOpacity ?? false) : false;
-  });
 
   const [position, setPosition] = useState(() => {
     const saved = localStorage.getItem(`god-${id}`);
@@ -45,12 +45,11 @@ function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
         rotation,
         isImgSet,
         transform,
-        setOpacity,
         x: position.x,
         y: position.y,
       }),
     );
-  }, [rotation, isImgSet, transform, setOpacity, position, id]);
+  }, [rotation, isImgSet, transform, position, id]);
   const getTransformStyle = () => {
     let transformStr = `rotate(${rotation}deg)`;
 
@@ -109,7 +108,7 @@ function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
             src={img}
             alt="placeholder"
             draggable="false"
-            className={`${setBuried[isImgSet as keyof typeof setBuried]} ${setOpacity ? "opacity" : ""}`}
+            className={`${setBuried[isImgSet as keyof typeof setBuried]}`}
           />
         </div>
         <div className={`${isOpen ? "OpenMenu" : "hidden"} `}>
@@ -133,18 +132,18 @@ function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
             {transform === 0
               ? "Recto"
               : transform === 1
-                ? "Izquierda"
+                ? "Derecha"
                 : transform === 2
-                  ? "Derecha"
+                  ? "Izquierda"
                   : transform === 3
-                    ? "Arriba"
-                    : "Abajo"}
+                    ? "Abajo"
+                    : "Arriba"}
           </button>
           <button
-            className="button"
-            onClick={() => setSetOpacity((prev: boolean) => !prev)}
+            className="button red"
+            onClick={() => dispatch(removeGod({id, img}))}
           >
-            Espiritu: {setOpacity ? "Si" : "No"}
+            Borrar
           </button>
           <button className="button red" onClick={() => setIsOpen(false)}>
             Cerrar

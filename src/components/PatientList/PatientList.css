@@ -1,3 +1,14 @@
+.list-Container {
+  width: 1170px;
+}
+
+.list-Container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
 .patient-card {
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border: 1px solid #e5e7eb;
@@ -112,6 +123,17 @@
 }
 
 @media (max-width: 640px) {
+
+  .list-Container {
+    max-width: 332px;
+  }
+  .link-wrapper{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .link{
+    padding: 0.2rem;
+  }
   .actions-row {
     flex-direction: column;
   }

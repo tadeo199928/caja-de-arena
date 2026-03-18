@@ -141,7 +141,7 @@ function PatientList({ refresh }: PatientListProps) {
                 <FaCopy className="copy-icon" onClick={() => navigator.clipboard.writeText(generatedLinks[patient.id])}/>
               </div>
             ) : (
-              <p className="link">No hay link de una sesión activa</p>
+              <p className="link">No hay link de una sesión activa.</p>
             )}
 
             <div className="actions-row">
