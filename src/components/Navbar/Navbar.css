@@ -6,7 +6,11 @@
   padding: 0.8rem 1.2rem;
   background: #78401f;
   z-index: 100;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
 }
 
 .Title {
@@ -31,7 +35,6 @@
   align-items: center;
   gap: 0.7rem;
   flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
 .icon {
@@ -49,7 +52,7 @@
   padding: 0.5rem 0.9rem;
   border: 2px solid var(--brass-dark);
   border-radius: 6px;
-  background: #19b674;
+  background: #1a3d2e;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
     0 3px 5px rgba(0, 0, 0, 0.35);
@@ -79,7 +82,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: #6f3c1f;
+  background: #1a3d2e;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   z-index: 100;
 }

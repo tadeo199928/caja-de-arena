@@ -101,7 +101,7 @@ function MyDraggableComponent({ img, id }: MyDraggableComponentProps) {
     >
       <div ref={nodeRef} className="draggable-item">
         <div
-          className={`image-container ${isOpen ? "border-blue" : "border-red"}`}
+          className="image-container"
           style={getTransformStyle()}
         >
           <img
