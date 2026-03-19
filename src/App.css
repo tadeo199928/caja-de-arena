@@ -8,15 +8,3 @@
   flex: 1;
 }
 
-:root {
-  --color-white: #fff;
-  --color-purple: #3f3cbb;
-  --color-midnight: #121063;
-  --color-tahiti: #3ab7bf;
-  --color-bermuda: #78dcca;
-  --color-sand: #d6b588;
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-red-500: #ef4444;
-  --color-red-600: #dc2626;
-}
