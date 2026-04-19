@@ -1,9 +1,9 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import pool from "../db.ts";
-import { handleError } from "../utils/handleError.ts";
-import { verifyToken } from "../middleware/authToken.ts";
+import pool from "../db.js";
+import { handleError } from "../utils/handleError.js";
+import { verifyToken } from "../middleware/authToken.js";
 
 const router = express.Router();
 

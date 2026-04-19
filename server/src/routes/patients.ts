@@ -1,7 +1,7 @@
 import express from "express";
-import pool from "../db.ts";
-import { verifyToken } from "../middleware/authToken.ts";
-import { handleError } from "../utils/handleError.ts";
+import pool from "../db.js";
+import { verifyToken } from "../middleware/authToken.js";
+import { handleError } from "../utils/handleError.js";
 
 const router = express.Router();
 

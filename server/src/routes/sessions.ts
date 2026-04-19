@@ -1,9 +1,9 @@
 import express from "express";
-import pool from "../db.ts";
+import pool from "../db.js";
 import { randomUUID } from "crypto";
-import { verifyToken } from "../middleware/authToken.ts";
-import { verifySession } from "../middleware/verifyToken.ts";
-import { handleError } from "../utils/handleError.ts";
+import { verifyToken } from "../middleware/authToken.js";
+import { verifySession } from "../middleware/verifyToken.js";
+import { handleError } from "../utils/handleError.js";
 
 const router = express.Router();
 

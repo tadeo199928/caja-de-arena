@@ -1,6 +1,6 @@
-import pool from "../db.ts";
+import pool from "../db.js";
 import type { Request, Response, NextFunction } from "express";
-import { handleError } from "../utils/handleError.ts";
+import { handleError } from "../utils/handleError.js";
 
 declare global {
   namespace Express {

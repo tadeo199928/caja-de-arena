@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import authRoutes from "./routes/auth.ts";
-import sessionRoutes from "./routes/sessions.ts";
-import patientsRoutes from "./routes/patients.ts";
-import sessionEventsRoutes from "./routes/session_events.ts";
+import authRoutes from "./routes/auth.js";
+import sessionRoutes from "./routes/sessions.js";
+import patientsRoutes from "./routes/patients.js";
+import sessionEventsRoutes from "./routes/session_events.js";
 import cors from "cors";
 
 dotenv.config();
